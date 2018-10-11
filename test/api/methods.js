@@ -300,7 +300,10 @@ describe("API: JSDOM class's methods", () => {
       });
 
       it("should reconfigure the document.hidden property (tested from the inside)", () => {
-        const dom = new JSDOM(`<script>window.getHidden = () => document.hidden;</script>`, { runScripts: "dangerously" });
+        const dom = new JSDOM(
+          `<script>window.getHidden = () => document.hidden;</script>`,
+          { runScripts: "dangerously" }
+        );
 
         dom.reconfigure({ documentHidden: false });
         assert.strictEqual(dom.window.getHidden(), false);
